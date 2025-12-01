@@ -1,12 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FlaskService } from './services/flask-service';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  profilo = signal<any>({});
+
+  constructor(private flaskService: FlaskService) {}
+
+  ngOnInit(): void {
+    this.flaskService.getProfilo().subscribe((dati) => {
+      this.profilo.set(dati);
+    });
+  }
 }
