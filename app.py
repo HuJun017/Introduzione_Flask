@@ -1,5 +1,5 @@
 #import dellla classe Flask da flask
-from flask import Flask
+from flask import Flask, jsonify
 
 #inizializziamo flask
 #app rappresenta il nostro server
@@ -12,6 +12,14 @@ def index():
     #ora una stringa, dopo un json, prossimamente una select da un db
     data = "ciao mondo"
     return data
+
+@app.route('/profilo')
+def profilo():
+    dati = {
+        "nome": 'Jin',
+        'cognome': 'Negraccio'
+    }
+    return jsonify(dati)
 
 if __name__ == "__main__":
     #avviamo il server
