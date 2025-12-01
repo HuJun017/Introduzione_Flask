@@ -1,0 +1,8 @@
+<h2>Lista dei Paesi</h2>
+
+<ul>
+  <li *ngFor="let p of paesi()">
+    <strong>{{ p.Paese }}</strong> — {{ p.Capitale }}
+    ({{ p.Estensione_km2 }} km²)
+  </li>
+</ul>
